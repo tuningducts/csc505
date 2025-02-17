@@ -66,7 +66,7 @@ def menu_clean_up():
 # handles menu controlflow
 def menu():
     os.system('clear')
-    menu_message = f"""Anschutz Modifed Waterfall
+    menu_message = f"""Mobile App UX/UI Flow
     1 - Pages
     2 - Landing Page
     3 - List Page
