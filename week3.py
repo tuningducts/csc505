@@ -1,12 +1,12 @@
 import os
 from time import sleep
-
+#pages class page title, button, and displays
 class Page:
     def __init__(self, title, content):
         self.title = title
         self.content = {"buttons": content[0], "displays":content[1]}
         
-
+    # display page content
     def display(self):
         print(f"--- {self.title} ---")
         print("Buttons:", self.content["buttons"])
@@ -15,7 +15,7 @@ class Page:
 
 
 
-
+# creates pages
 def create_pages():
     landing_page = Page("Landing Page", [["create new list", "load saved list"],["list window",]])
     list_page  = Page("List Page", [["add item", "clear item","save list","main menu"],["list window"]])
@@ -23,9 +23,8 @@ def create_pages():
     saved_list_page = Page("List Page", [["load list","main menu"],["saved lists window"]])
     return (landing_page, list_page, update_list_page, saved_list_page)
 
-
+ # Create the pages
 def pages():
-    # Create the pages
     landing_page = Page("Landing Page", [["create new list", "load saved list"], ["list window"]])
     list_page  = Page("List Page", [["add item", "clear item", "save list", "main menu"], ["list window"]])
     update_list_page = Page("Update List Page", [["add item", "clear item", "save list", "main menu"], ["list window"]])
@@ -57,10 +56,10 @@ def pages():
     print("5. Landing Page (Return):")
     landing_page.display()
 
-# takes users input prints UML object and returns to menu
-def menu_clean_up():
-        input("press any key to continue")
-        menu()
+    # takes users input prints UML object and returns to menu
+    def menu_clean_up():
+            input("press any key to continue")
+            menu()
 
 
 # handles menu controlflow
