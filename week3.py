@@ -62,41 +62,52 @@ def pages():
             menu()
 
 
-# handles menu controlflow
-def menu():
-    os.system('clear')
-    menu_message = f"""Mobile App UX/UI Flow
-    1 - Pages
-    2 - Landing Page
-    3 - List Page
-    4 - Update List Page
-    5 - Saved List Page
-    q - Quit
+
+def main_menu():
     """
-    print(menu_message)
-    selection = input("Select Menu Item: ").lower()
-    if selection == "1":
-         pages()
-         menu_clean_up()
-    elif selection == "2":
-       landing_page.display()
-       menu_clean_up()
-    elif selection == "3":  
-        list_page.display()
-        menu_clean_up()
-    elif selection == "4": 
-        update_list_page.display()
-        menu_clean_up()
-    elif selection == "5":
-        saved_list_page.display()
-        menu_clean_up()
-    elif selection == "q":
-        print("Have a great day!")
-        exit
-    else:
-        print("invalid selection enter 1,2,3,4,5,6,7,8 or q")
-        sleep(10)
-        menu()
+    Generates:
+        clears screen 
+        prompts user for input
+    Returns:
+      int between 0 - 6
+    """
+    os.system('clear')
+    print("Mobile App UX/UI Flow")
+    print("1. Pages")
+    print("2. Landing Page")
+    print("3. Saved List")
+    print("4. Update List Page")
+    print("5. Saved List Page")
+    print("6. Quit")
+    try:
+        return int(input("Enter choice: "))
+    except ValueError:
+        return 0
+
+def control_loop():
+    while True:
+        menu_selection = main_menu()
+        if menu_selection == 1:
+            pages()
+            input("Press enter to continue")
+        elif menu_selection == 2:
+            landing_page.display()
+            input("Press enter to continue") 
+        elif menu_selection == 3:
+            list_page.display()
+            input("Press enter to continue")
+        elif menu_selection == 4:
+            update_list_page.display()
+            input("Press enter to continue")
+        elif menu_selection == 5:
+            saved_list_page.display()
+            input("Press enter to continue")          
+        elif menu_selection == 6:
+            print("Goodbye")
+            exit()
+        else:
+            print("Invalid selection")
+            input("Press enter to continue")
 
 # main entry point
 if __name__ == "__main__":
@@ -104,4 +115,4 @@ if __name__ == "__main__":
     list_page  = Page("List Page", [["add item", "clear item","save list","main menu"],["list window"]])
     update_list_page = Page("List Page", [["add item", "clear item","save list","main menu"],["list window"]])
     saved_list_page = Page("List Page", [["load list","main menu"],["saved lists window"]])
-    menu()
+    control_loop()
